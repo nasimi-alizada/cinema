@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create tickets table
+      author: Nasimi Alizadeh
+      changes:
+        - createTable:
+            tableName: tickets
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: seat_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_tickets_to_seats
+                    reference: seats(id)
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_tickets_to_users
+                    reference: users(id)
+              - column:
+                  name: session_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_tickets_to_sessions
+                    reference: sessions(id)

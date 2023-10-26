@@ -1,0 +1,20 @@
+spring:
+  datasource:
+      url: jdbc:h2:mem:cinema
+      username: sa
+      password: password
+      driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+
+

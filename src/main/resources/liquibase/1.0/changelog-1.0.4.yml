@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create sessions table
+      author: Nasimi Alizadeh
+      changes:
+        - createTable:
+            tableName: sessions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: start_time
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_time
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: session_type
+                  type: VARCHAR(50)
+              - column:
+                  name: price
+                  type: decimal(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hall_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_sessions_to_halls
+                    reference: hall(id)
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_sessions_to_movies
+                    reference: movies(id)

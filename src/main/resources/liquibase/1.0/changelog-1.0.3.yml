@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create seats table
+      author: Nasimi Alizadeh
+      changes:
+        - createTable:
+            tableName: seats
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: row_of_seat
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: column_of_seat
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: seat_status
+                  type: varchar(50)
+              - column:
+                  name: hall_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_seats_to_hall
+                    reference: halls(id)
